@@ -28,10 +28,10 @@ const CustomTable = props => {
                 <Rows>
                 {rows.map(rowInfo => (
                     <Table.Row key={rowInfo.id}>
-                        { rowInfo.username && <Row.rowInfo children={rowInfo.username}/> }
-                        { rowInfo.email && <Row.rowInfo children={rowInfo.email}/> }
-                        { rowInfo.text && <Row.rowInfo children={rowInfo.text}/> }
-                        { rowInfo.status && <Row.rowInfo children={rowInfo.status}/> }
+                        <Row.rowInfo children={rowInfo.username}/>
+                        <Row.rowInfo children={rowInfo.email}/>
+                        <Row.rowInfo children={rowInfo.text}/>
+                        <Row.rowInfo children={rowInfo.status}/>
                     </Table.Row> 
                 ))}
                 </Rows>
