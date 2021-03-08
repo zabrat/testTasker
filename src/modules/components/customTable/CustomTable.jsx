@@ -11,6 +11,7 @@ import {
 const CustomTable = props => {
     const {
         rows,
+        sortHandle,
         columnTitles,
     } = props;
 
@@ -18,16 +19,20 @@ const CustomTable = props => {
         <ThemeProvider theme={theme}>
             <Table>
                 <Table.TableHeader>
-                    {columnTitles.map((text, index) => (
+                    {columnTitles.map(title => (
                         <TableHeader.columnTitle 
-                            key={index}    
-                            children={text}
+                            key={title.id}  
+                            name={title.name}  
+                            children={title.text}
+                            onClick={sortHandle}
+                            id={title.id}
                         />
                     ))}
                 </Table.TableHeader>
                 <Rows>
                 {rows.map(rowInfo => (
                     <Table.Row key={rowInfo.id}>
+                        <Row.rowInfo children={rowInfo.id}/>
                         <Row.rowInfo children={rowInfo.username}/>
                         <Row.rowInfo children={rowInfo.email}/>
                         <Row.rowInfo children={rowInfo.text}/>

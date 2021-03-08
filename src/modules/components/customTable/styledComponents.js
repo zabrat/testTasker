@@ -13,10 +13,11 @@ export const TableHeader = styled.div`
 `;
 
 TableHeader.columnTitle = styled.p`
-    width: 20%;
+    width: 10%;
     text-align: center;
     margin: 0;
     font-size: 20px;
+    cursor: pointer;
 `;
 
 export const Rows = styled.div`

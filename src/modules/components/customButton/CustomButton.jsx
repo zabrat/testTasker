@@ -5,10 +5,12 @@ import theme from '../../themes/colors.js';
 
 const CustomButton = props => {
     const {
+        type,
         text,
         width,
         height,
         fontSize,
+        handleEvent,
         buttonBackground,
         buttonBackgroundHover,
         buttonBackgroundActive
@@ -16,8 +18,10 @@ const CustomButton = props => {
 
     return(
         <Button width={width}
+                type={type}
                 height={height}
                 fontSize={fontSize}
+                onClick={handleEvent}
                 buttonBackground={buttonBackground}
                 buttonBackgroundHover={buttonBackgroundHover}
                 buttonBackgroundActive={buttonBackgroundActive}
@@ -39,8 +43,9 @@ CustomButton.propTypes = {
 
 CustomButton.defaultProps = {
     text: 'button',
+    type: 'button',
     width: 100,
-    height: 20,
+    height: 25,
     fontSize: 18,
     buttonBackground: theme.buttonBackground,
     buttonBackgroundHover: theme.buttonBackgroundHover,

@@ -1,6 +1,6 @@
 import constants from '../../constants';
 
 export const onSetTasks = payload => ({
-    type: constants.GET_TASKS_SUCCESS,
+    type: constants.ADD_TASK_SUCCESS,
     payload
 });

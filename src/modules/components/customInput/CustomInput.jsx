@@ -10,16 +10,19 @@ const CustomInput = props => {
         label,
         width,
         height,
+        display,
         fontSize,
+        labelColor,
         handleChange,
         inputBackground,
     } = props;
 
     return(
-        <InputWrapper>
+        <InputWrapper display={display}>
             {label && 
             <InputWrapper.label fontSize={fontSize} 
                                 children={label}
+                                labelColor={labelColor}
             />}
             <InputWrapper.input 
                 type={type}
@@ -38,7 +41,9 @@ CustomInput.propTypes = {
     type: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number,
+    display: PropTypes.string,
     fontSize: PropTypes.number,
+    lavelColor: PropTypes.string,
     inputTitle: PropTypes.string,
     inputBackground: PropTypes.string,
 }
@@ -47,6 +52,7 @@ CustomInput.defaultProps = {
     type: 'text',
     width: 40,
     height: 25,
+    display: 'block',
     fontSize: 18,
     inputBackground: theme.infoBackground,
 }

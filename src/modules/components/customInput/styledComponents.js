@@ -1,16 +1,23 @@
 import styled from "styled-components";
 
 export const InputWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    flex-wrap:wrap;
+    height: 30%;
     width: 100%;
+    ${props => props.display === 'inline' ?
+     `display: flex;`
+     :
+     `display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;`
+    }
+    
 `;
 
 InputWrapper.label = styled.p`
-    margin: 0;
-    width: 130px;
+    margin: 5px;
     font-size: ${props => props.fontSize}px;
+    color: ${props => props.labelColor};
 `;
 
 InputWrapper.input = styled.input`
