@@ -11,8 +11,9 @@ export function* watchHeaderModule() {
 function* workerAddTask(action) {
   try {
     const formData = yield call(formDataCreator, action.payload)
-    const response = yield call(api.addTask, formData);
-    console.log(response)
+    yield call(api.addTask, formData);
+
+    yield put(actions.onGetTasksRequest())
   } catch (err) {
     console.error("ERROR", err);
   }

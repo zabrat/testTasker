@@ -36,11 +36,7 @@ const HeaderModule = props => {
     return(
         <ThemeProvider theme={theme}>
             <Wrapper>
-                <Wrapper.FormWrapper 
-                    onSubmit={onAddTask}
-                    action='https://uxcandy.com/~shapoval/test-task-backend/v2/create?developer=Name'
-                    method='post'
-                >
+                <Wrapper.FormWrapper onSubmit={onAddTask}>
                     <CustomInput
                         label='Name'
                         name='username'
