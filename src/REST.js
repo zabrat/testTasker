@@ -24,6 +24,15 @@ export const logIn = async formData => {
     .catch(err => console.error('ERROR', err))
 }
 
+export const editTask = async formData => {
+    return await fetch(mainURL+'/edit/?developer=zaur', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .catch(err => console.error('ERROR', err))
+}
+
 // export const sortField = async field => {
 //     return await fetch(mainURL + '/?developer=zaur&sort_field=' + field,)
 //     .then(response => response.json())

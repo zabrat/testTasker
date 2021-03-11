@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { 
     Wrapper,
     PagesWrapper
@@ -26,6 +27,14 @@ const CustomPaginator = props => {
             </PagesWrapper>
         </Wrapper>
     )
+}
+
+CustomPaginator.propTypes = {
+    pageQuantity: PropTypes.number
+}
+
+CustomPaginator.defaultProps = {
+    pageQuantity: 0,
 }
 
 export default React.memo(CustomPaginator);

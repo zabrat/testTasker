@@ -3,17 +3,21 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../themes/colors.js';
 import { Wrapper } from './styledComponents.js';
 import CustomTable  from '../components/customTable/CustomTable';
-import HeaderModule from '../headerModule'
-import CustomPaginator from '../components/customPaginator/CustomPaginator'
+import HeaderModule from '../headerModule';
+import CustomPaginator from '../components/customPaginator/CustomPaginator';
+import CustomButton from '../components/customButton/CustomButton';
+import { Link }  from 'react-router-dom';
 // import Header  from '../header';
 
 const TodoModule = props => {
     const {
         tasks,
+        isLogged,
         changePage,
         pageQuantity,
         getTasksRequest,
         sortFieldRequest,
+        openEditTaskModal,
     } = props;
 
 
@@ -57,12 +61,23 @@ const TodoModule = props => {
         changePage(id);
     }
 
+    const onOpenModal = () => {
+        isLogged && openEditTaskModal()
+    }
+
     return(
         <ThemeProvider theme={theme}>
+            <Link to='/login'>
+                <CustomButton
+                    text='Sign in'
+                />
+            </Link>
             <HeaderModule/>
             <Wrapper data-at={'todo-module-conatiner'}>
                 <CustomTable
                     rows={tasks}
+                    isLogged={isLogged}
+                    onOpenModal={onOpenModal}
                     sortHandle={sortField}
                     columnTitles={columnTitles}
                 />

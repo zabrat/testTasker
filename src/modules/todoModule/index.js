@@ -5,10 +5,12 @@ import Component from './TodoModule.jsx';
 
 const mapStateToProps = state => ({
     tasks: selectors.getTasks(state),
-    pageQuantity: selectors.getPageQuantity(state)
+    pageQuantity: selectors.getPageQuantity(state),
+    isLogged: selectors.getUserStatus(state),
 });
 
 const mapDispatchToProps = dispatch => ({
+    openEditTaskModal: () => dispatch(actions.onOpenEditTaskModal()),
     getTasksRequest: () => dispatch(actions.onGetTasksRequest()),
     sortFieldRequest: field => dispatch(actions.onSortFieldRequest(field)),
     changePage: page => dispatch(actions.onChangePage(page))

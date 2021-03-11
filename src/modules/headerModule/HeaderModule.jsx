@@ -31,6 +31,11 @@ const HeaderModule = props => {
     const onAddTask = event => {
         event.preventDefault();
         addTaskRequest(taskData)
+        setTaskData({
+            username: '',
+            email: '',
+            text: ''
+        })
     }
 
     return(
@@ -39,6 +44,7 @@ const HeaderModule = props => {
                 <Wrapper.FormWrapper onSubmit={onAddTask}>
                     <CustomInput
                         label='Name'
+                        value={taskData.username}
                         name='username'
                         width={80}
                         handleChange={getInputValue}
@@ -46,6 +52,7 @@ const HeaderModule = props => {
                     />
                     <CustomInput
                         label='Email'
+                        value={taskData.email}
                         name='email'
                         display='inline'
                         width={80}
@@ -53,6 +60,7 @@ const HeaderModule = props => {
                     />
                     <CustomInput
                         display='inline'
+                        value={taskData.text}
                         label='Task'
                         width={80}
                         name='text'

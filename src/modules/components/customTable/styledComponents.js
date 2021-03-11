@@ -30,6 +30,7 @@ export const Rows = styled.div`
 
 export const Row = styled.div`
     background: ${props => props.theme.infoBackground};
+    ${props => props.isLogged ? 'cursor: pointer;' : null}
     display: flex;
     justify-content: space-around;
     padding: 5px 0px;

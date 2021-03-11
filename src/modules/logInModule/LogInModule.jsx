@@ -4,6 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../themes/colors.js';
 import CustomInput from '../components/customInput/CustomInput';
 import CustomButton from '../components/customButton/CustomButton';
+import { Link }  from 'react-router-dom';
 
 const LoginModule = props => {
     const {
@@ -28,14 +29,24 @@ const LoginModule = props => {
     const onSignIn = event => {
         event.preventDefault();
         signInRequest(userData);
+        setUserData({
+                username: '',
+                password: ''
+        })
     }
 
     return(
         <ThemeProvider theme={theme}>
+            <Link to='/'>
+                <CustomButton
+                    text='Sign in'
+                />
+            </Link>
             <Wrapper>
                 <Wrapper.FormWrapper onSubmit={onSignIn}>
                     <CustomInput 
-                        type='email'
+                        value={userData.username}
+                        required={true}
                         name='username'
                         label='Login'
                         labelColor={theme.colorFont}
@@ -47,6 +58,8 @@ const LoginModule = props => {
                     />
                     <CustomInput 
                         type='password'
+                        required={true}
+                        value={userData.password}
                         name='password'
                         label='Password'
                         labelColor={theme.colorFont}
@@ -60,7 +73,6 @@ const LoginModule = props => {
                         type='submit'
                         height={30}
                         text='Sing in'
-                        handleEvent={onSignIn}
                     />
                 </Wrapper.FormWrapper>
             </Wrapper>

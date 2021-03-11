@@ -13,3 +13,10 @@ export const onChangePage = payload => ({
     type: constants.CHANGE_PAGE_REQUEST,
     payload
 })
+
+export const onOpenEditTaskModal = () => ({
+    type: constants.OPEN_MODAL_WINDOW,
+    payload: {
+        type: constants.EDIT_TASK_MODAL_WINDOW_TYPE
+    }
+})

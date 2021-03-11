@@ -11,7 +11,9 @@ import {
 const CustomTable = props => {
     const {
         rows,
+        isLogged,
         sortHandle,
+        onOpenModal,
         columnTitles,
     } = props;
 
@@ -31,7 +33,7 @@ const CustomTable = props => {
                 </Table.TableHeader>
                 <Rows>
                 {rows.map(rowInfo => (
-                    <Table.Row key={rowInfo.id}>
+                    <Table.Row key={rowInfo.id} isLogged={isLogged} onClick={onOpenModal}>
                         <Row.rowInfo children={rowInfo.id}/>
                         <Row.rowInfo children={rowInfo.username}/>
                         <Row.rowInfo children={rowInfo.email}/>
