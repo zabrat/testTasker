@@ -23,13 +23,13 @@ const Modals = props => {
             background: 'rgba(0,0,0,0.5)',
         }
     }
-    console.log(editTaskModalData)
+
     return (
-            <EditTaskModal
-                styles={modalStyles}
-                isShow={editTaskModalData.isShow}
-                closeModalWindow={closeModalWindow}
-            />
+        <EditTaskModal
+            styles={modalStyles}
+            modalData={editTaskModalData}
+            closeModalWindow={closeModalWindow}
+        />
     );
 }
 

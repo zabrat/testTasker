@@ -15,6 +15,7 @@ const TodoModule = props => {
         isLogged,
         changePage,
         pageQuantity,
+        checkUserStatus,
         getTasksRequest,
         sortFieldRequest,
         openEditTaskModal,
@@ -23,7 +24,8 @@ const TodoModule = props => {
 
     useEffect(() => {
         getTasksRequest();
-    }, [getTasksRequest])
+        checkUserStatus();
+    }, [getTasksRequest, checkUserStatus])
 
     const columnTitles = [
         {
@@ -61,8 +63,25 @@ const TodoModule = props => {
         changePage(id);
     }
 
-    const onOpenModal = () => {
-        isLogged && openEditTaskModal()
+    const onOpenModal = event => {
+        if(isLogged){
+            let currentElement = event.target;
+
+            if (!(currentElement.tagName === 'DIV')){
+                currentElement = currentElement.parentElement
+            } 
+            const taskId = currentElement.children[0].innerText;
+            const taskText = currentElement.children[3].innerText;
+            const taskStatus = currentElement.children[4].innerText;
+
+            const taskData = {
+                taskId,
+                taskText,
+                taskStatus
+            }
+
+            openEditTaskModal(taskData);
+        }
     }
 
     return(

@@ -33,7 +33,7 @@ const CustomInput = props => {
                 width={width}
                 height={height}
                 fontSize={fontSize}
-                required={true}
+                required={required}
                 onChange={handleChange}
                 inputBackground={inputBackground}
             />

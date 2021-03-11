@@ -14,9 +14,14 @@ export const onChangePage = payload => ({
     payload
 })
 
-export const onOpenEditTaskModal = () => ({
+export const onOpenEditTaskModal = data => ({
     type: constants.OPEN_MODAL_WINDOW,
     payload: {
-        type: constants.EDIT_TASK_MODAL_WINDOW_TYPE
+        type: constants.EDIT_TASK_MODAL_WINDOW_TYPE,
+        data
     }
+})
+
+export const onCheckUserStatus = () => ({
+    type: constants.SIGN_IN_REQUEST,
 })

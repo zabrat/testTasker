@@ -10,15 +10,20 @@ export function* watchLoginModule() {
 
 function* workerSignIn(action) {
   try {
-    const formData = yield call(formDataCreator, action.payload)
-    const response = yield call(api.logIn, formData);
-    const { status, message } = response
-    if (status === 'ok'){
-      yield put (actions.onSignInSuccess(message.token))
+    if(localStorage.getItem('userToken')){  
+      const userToken = JSON.parse(localStorage.getItem('userToken'));
+      yield put (actions.onSignInSuccess(userToken))
     } else {
-      alert(message.password)
-    }
-    console.log(response)
+      const formData = yield call(formDataCreator, action.payload)
+      const response = yield call(api.logIn, formData);
+      const { status, message } = response
+      if (status === 'ok'){
+        yield put (actions.onSignInSuccess(message.token))
+        localStorage.setItem('userToken', JSON.stringify(message.token))
+      } else {
+        alert(message.password)
+      }
+  }
   } catch (err) {
         console.error("ERROR", err);
   }

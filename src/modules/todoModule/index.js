@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    openEditTaskModal: () => dispatch(actions.onOpenEditTaskModal()),
+    checkUserStatus: () => dispatch(actions.onCheckUserStatus()),
+    openEditTaskModal: taskData => dispatch(actions.onOpenEditTaskModal(taskData)),
     getTasksRequest: () => dispatch(actions.onGetTasksRequest()),
     sortFieldRequest: field => dispatch(actions.onSortFieldRequest(field)),
     changePage: page => dispatch(actions.onChangePage(page))

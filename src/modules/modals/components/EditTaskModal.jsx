@@ -6,7 +6,7 @@ import EditTaskComponent from './editTaskComponent/EditTaskComponent.jsx';
 const EditTaskModal = props => {
     const {
         styles,
-        isShow,
+        modalData,
         closeModalWindow,
     } = props;
 
@@ -19,17 +19,17 @@ const EditTaskModal = props => {
     return (
         <Modal
             style={styles}
-            isOpen={isShow}
+            isOpen={modalData.isShow}
             children={
                 <EditTaskComponent
-                    isShow={isShow}
+                    modalData={modalData}
                     closeModalWindow={closeModalWindow}
                 />
             }
             ariaHideApp={false}
             onRequestClose={onClose}
-            shouldCloseOnEsc={false}
-            shouldCloseOnOverlayClick={false}
+            shouldCloseOnEsc={true}
+            shouldCloseOnOverlayClick={true}
         />
     );
 }
