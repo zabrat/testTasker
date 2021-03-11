@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import Modal from 'react-modal'
 import constants from '../../../constants'
-import EditTaskComponent from './editTaskComponent/EditTaskComponent.jsx';
+import EditTaskComponent from './editTaskComponent';
 
 const EditTaskModal = props => {
     const {

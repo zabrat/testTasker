@@ -7,7 +7,6 @@ import HeaderModule from '../headerModule';
 import CustomPaginator from '../components/customPaginator/CustomPaginator';
 import CustomButton from '../components/customButton/CustomButton';
 import { Link }  from 'react-router-dom';
-// import Header  from '../header';
 
 const TodoModule = props => {
     const {
@@ -84,6 +83,18 @@ const TodoModule = props => {
         }
     }
 
+    const setTaskStatusFormat = taskStatus => {
+        if(taskStatus === 0){
+            return "task isn't completed"
+        } else if (taskStatus === 1) {
+            return "task isn't completed, edited by admin"
+        } else if (taskStatus === 10) {
+            return "task is completed"
+        } else if (taskStatus === 11) {
+            return "task is edited by admin and completed"
+        }
+    }
+
     return(
         <ThemeProvider theme={theme}>
             <Link to='/login'>
@@ -95,6 +106,7 @@ const TodoModule = props => {
             <Wrapper data-at={'todo-module-conatiner'}>
                 <CustomTable
                     rows={tasks}
+                    setTaskStatusFormat={setTaskStatusFormat}
                     isLogged={isLogged}
                     onOpenModal={onOpenModal}
                     sortHandle={sortField}

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Wrapper } from './styledComponents';
 import { ThemeProvider } from 'styled-components';
 import theme from '../themes/colors.js';
-import formDataCreator from '../../utils/formDataCreator'
 import CustomInput from '../components/customInput/CustomInput';
 import CustomButton from '../components/customButton/CustomButton';
 

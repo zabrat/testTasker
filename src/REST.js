@@ -24,29 +24,11 @@ export const logIn = async formData => {
     .catch(err => console.error('ERROR', err))
 }
 
-export const editTask = async formData => {
-    return await fetch(mainURL+'/edit/?developer=zaur', {
+export const editTask = async (formData, id) => {
+    return await fetch(mainURL+`/edit/${id}?developer=zaur`, {
         method: 'POST',
         body: formData,
     })
     .then(response => response.json())
     .catch(err => console.error('ERROR', err))
 }
-
-// export const sortField = async field => {
-//     return await fetch(mainURL + '/?developer=zaur&sort_field=' + field,)
-//     .then(response => response.json())
-//     .catch(err => console.error('ERROR', err))
-// }
-
-// export const sortDirection = async direction => {
-//     return await fetch(mainURL + '/?developer=zaur&sort_direction=' + direction,)
-//     .then(response => response.json())
-//     .catch(err => console.error('ERROR', err))
-// }
-
-// export const changePage = async page => {
-//     return await fetch(mainURL + '/?developer=zaur&page=' + page,)
-//     .then(response => response.json())
-//     .catch(err => console.error('ERROR', err))
-// }

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import constants from '../../constants/index';
 import { getModalStyles } from './logic';
 import EditTaskModal from './components/EditTaskModal.jsx';
@@ -9,7 +9,7 @@ const Modals = props => {
         closeModalWindow
     } = props;
 
-    const styles = useMemo(() => getModalStyles(), [getModalStyles]);
+    const styles = getModalStyles();
     const editTaskModalData = modals[constants.EDIT_TASK_MODAL_WINDOW_TYPE];
 
     const modalStyles = {

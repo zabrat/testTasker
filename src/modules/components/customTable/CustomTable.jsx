@@ -15,6 +15,7 @@ const CustomTable = props => {
         sortHandle,
         onOpenModal,
         columnTitles,
+        setTaskStatusFormat
     } = props;
 
     return(
@@ -38,7 +39,7 @@ const CustomTable = props => {
                         <Row.rowInfo children={rowInfo.username}/>
                         <Row.rowInfo children={rowInfo.email}/>
                         <Row.rowInfo children={rowInfo.text}/>
-                        <Row.rowInfo children={rowInfo.status}/>
+                        <Row.rowInfo children={setTaskStatusFormat(rowInfo.status)}/>
                     </Table.Row> 
                 ))}
                 </Rows>
