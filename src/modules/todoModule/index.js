@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
     tasks: selectors.getTasks(state),
     pageQuantity: selectors.getPageQuantity(state),
     isLogged: selectors.getUserStatus(state),
+    currentPage: selectors.getCurrentPage(state)
 });
 
 const mapDispatchToProps = dispatch => ({

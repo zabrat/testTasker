@@ -14,6 +14,7 @@ const TodoModule = props => {
         logOut,
         isLogged,
         changePage,
+        currentPage,
         pageQuantity,
         checkUserStatus,
         getTasksRequest,
@@ -119,6 +120,7 @@ const TodoModule = props => {
                         columnTitles={columnTitles}
                         />
                     <CustomPaginator
+                        currentPage={currentPage}
                         pageQuantity={pageQuantity}
                         handlePage={handlePage}
                         /> 

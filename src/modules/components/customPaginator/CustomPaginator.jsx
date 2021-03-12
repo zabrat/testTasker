@@ -8,10 +8,12 @@ import {
 const CustomPaginator = props => {
     const {
         handlePage,
-        pageQuantity
+        pageQuantity,
+        currentPage
     } = props;
 
     const pagesList = Array.from(Array(pageQuantity+1).keys()).slice(1);
+    
 
     return(
         <Wrapper>
@@ -21,6 +23,7 @@ const CustomPaginator = props => {
                         onClick={handlePage}
                         key={page}
                         id={page}
+                        currentPage={+currentPage === page ? true: false}
                         children={page}/>
                 ))    
                 }

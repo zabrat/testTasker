@@ -13,4 +13,5 @@ export default Object.defineProperties(constants, {
     CHANGE_PAGE_REQUEST: { value: 'change_page_request', writable: false },
     SORT_FIELD_REQUEST: { value: 'sort_field_request', writable: false },
     LOG_OUT: { value: 'log_out', writable: false },
+    CHECK_USER_STATUS: { value: 'check_user_status', writable: false },
 });

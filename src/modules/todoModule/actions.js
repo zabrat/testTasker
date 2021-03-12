@@ -23,7 +23,7 @@ export const onOpenEditTaskModal = data => ({
 })
 
 export const onCheckUserStatus = () => ({
-    type: constants.SIGN_IN_REQUEST,
+    type: constants.CHECK_USER_STATUS,
 })
 
 export const onLogOut = () => ({
