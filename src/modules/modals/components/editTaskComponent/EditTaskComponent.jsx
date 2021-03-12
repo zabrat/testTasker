@@ -10,7 +10,6 @@ const EditTaskComponent = props => {
         onClose,
         modalData,
         editTaskRequest,
-        getTasksRequest,
     } = props;
 
     const isTaskChecked = (modalData.data.taskStatus ===  "task isn't completed") 
@@ -18,10 +17,6 @@ const EditTaskComponent = props => {
     
     const [taskText, setTaskText] = useState(modalData.data.taskText);
     const [isTaskDone, setIsTaskDone] = useState(isTaskChecked);
-
-    console.log(isTaskChecked)
-    console.log(isTaskDone)
-    console.log(modalData)
 
     const getInputValue = event => {
         setTaskText(event.target.value)
@@ -50,8 +45,6 @@ const EditTaskComponent = props => {
         }
 
         editTaskRequest(newTaskData);
-        getTasksRequest();
-
         onClose();
     }
 

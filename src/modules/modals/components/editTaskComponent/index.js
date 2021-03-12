@@ -9,7 +9,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     editTaskRequest: newTaskData => dispatch(actions.onEditTaskRequest(newTaskData)),
-    getTasksRequest: () => dispatch(actions.onGetTasksRequest()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

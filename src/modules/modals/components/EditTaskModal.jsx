@@ -1,6 +1,6 @@
 import React  from 'react';
-import Modal from 'react-modal'
-import constants from '../../../constants'
+import Modal from 'react-modal';
+import constants from '../../../constants';
 import EditTaskComponent from './editTaskComponent';
 
 const EditTaskModal = props => {
