@@ -30,6 +30,6 @@ function* workerGetTasks() {
 
     yield put(actions.onSetTasks(tasksData))
   } catch (err) {
-    console.error("ERROR", err);
+    console.error('ERROR', err);
   }
 }

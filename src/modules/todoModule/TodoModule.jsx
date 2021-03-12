@@ -30,11 +30,6 @@ const TodoModule = props => {
 
     const columnTitles = [
         {
-            id: 1,
-            text: 'Id',
-            name: 'id'
-        },
-        {
             id: 2,
             text: 'User name',
             name: 'username'
@@ -71,9 +66,9 @@ const TodoModule = props => {
             if (!(currentElement.tagName === 'DIV')){
                 currentElement = currentElement.parentElement
             } 
-            const taskId = currentElement.children[0].innerText;
-            const taskText = currentElement.children[3].innerText;
-            const taskStatus = currentElement.children[4].innerText;
+            const taskId = currentElement.id;
+            const taskText = currentElement.children[2].innerText;
+            const taskStatus = currentElement.children[3].innerText;
 
             const taskData = {
                 taskId,
@@ -91,9 +86,9 @@ const TodoModule = props => {
         } else if (taskStatus === 1) {
             return "task isn't completed, edited by admin"
         } else if (taskStatus === 10) {
-            return "task is completed"
+            return 'task is completed'
         } else if (taskStatus === 11) {
-            return "task is edited by admin and completed"
+            return 'task is edited by admin and completed'
         }
     }
 
@@ -104,25 +99,25 @@ const TodoModule = props => {
                     <Link to='/login'>
                         <CustomButton
                             text={isLogged ? 'Log out' : 'Sign in'}
-                            handleEvent={isLogged ? logOut : null}
                             height={30}
-                            />
+                            handleEvent={isLogged ? logOut : null}
+                        />
                     </Link>
                 </MainWrapper.ButtonWrapper>       
                 <HeaderModule/>
                 <TodoWrapper data-at={'todo-module-conatiner'}>
                     <CustomTable
                         rows={tasks}
-                        setTaskStatusFormat={setTaskStatusFormat}
                         isLogged={isLogged}
                         onOpenModal={onOpenModal}
                         sortHandle={sortField}
                         columnTitles={columnTitles}
+                        setTaskStatusFormat={setTaskStatusFormat}
                         />
                     <CustomPaginator
+                        handlePage={handlePage}
                         currentPage={currentPage}
                         pageQuantity={pageQuantity}
-                        handlePage={handlePage}
                         /> 
                 </TodoWrapper>
             </MainWrapper>

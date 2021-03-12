@@ -2,10 +2,8 @@ import constants from '../../constants';
 
 const initialState = {
     [constants.EDIT_TASK_MODAL_WINDOW_TYPE]: {
+        data: null,
         isShow: false,
-        context: null,
-        withBlur: true,
-        taskData: null
     }
 }
 export default (state = initialState, action) => {
@@ -17,8 +15,8 @@ export default (state = initialState, action) => {
                 ...state,
                 [type]: {
                     ...state[type],
-                    isShow: true,
                     data: data,
+                    isShow: true,
                 }
             }
         }

@@ -12,6 +12,7 @@ const CustomInput = props => {
         value,
         height,
         display,
+        checked,
         required,
         fontSize,
         labelColor,
@@ -32,6 +33,7 @@ const CustomInput = props => {
                 value={value}
                 width={width}
                 height={height}
+                checked={checked}
                 fontSize={fontSize}
                 required={required}
                 onChange={handleChange}

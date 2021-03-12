@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React  from 'react';
 import Modal from 'react-modal'
 import constants from '../../../constants'
 import EditTaskComponent from './editTaskComponent';
@@ -10,11 +10,11 @@ const EditTaskModal = props => {
         closeModalWindow,
     } = props;
 
-    const onClose = useCallback(() => {
+    const onClose = () => {
         closeModalWindow({
             type: constants.EDIT_TASK_MODAL_WINDOW_TYPE,
         });
-    }, [closeModalWindow]);
+    }
 
     return (
         <Modal
@@ -22,6 +22,7 @@ const EditTaskModal = props => {
             isOpen={modalData.isShow}
             children={
                 <EditTaskComponent
+                    onClose={onClose}
                     modalData={modalData}
                     closeModalWindow={closeModalWindow}
                 />

@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 const LoginModule = props => {
     const {
-        isLogged,
         signInRequest
     } = props
 

@@ -22,7 +22,7 @@ function* workerSignIn(action) {
         alert(message.password)
       }
   } catch (err) {
-        console.error("ERROR", err);
+        console.error('ERROR', err);
   }
 }
 
@@ -34,11 +34,11 @@ function* workerCheckUserStatus() {
       yield put (actions.onSignInSuccess(userToken))
     }
   } catch (err) {
-    console.error("ERROR", err);
+    console.error('ERROR', err);
   }
 }
 
-function* workerlogOut() {
+function workerlogOut() {
   try {
     localStorage.removeItem('userToken')
   } catch (err) {

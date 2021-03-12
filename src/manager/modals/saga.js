@@ -9,19 +9,14 @@ export function* watchModals() {
 
 function* workerEditTask(action) {
   try {
-    console.log(action.payload)
-      const formData = yield call(formDataCreator, action.payload)
-      const response = yield call(api.editTask, formData, action.payload.id);
-      // const { status, message } = response
-
-      console.log(response)
-      // if (status === 'ok'){
-      //   yield put (actions.onSignInSuccess(message.token))
-      //   localStorage.setItem('userToken', JSON.stringify(message.token))
-      // } else {
-      //   alert(message.password)
-      // }
+    console.log(action.payload);
+    const formData = yield call(formDataCreator, action.payload);
+    const response = yield call(api.editTask, formData, action.payload.id);
+    const { status } = response;
+    if (status === 'error') {
+      alert('Need authorization');
+    }
   } catch (err) {
-        console.error("ERROR", err);
+    console.error('ERROR', err);
   }
 }

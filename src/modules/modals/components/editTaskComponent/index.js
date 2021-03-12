@@ -5,7 +5,6 @@ import * as selectors from './selectors';
 
 const mapStateToProps = state => ({
     modals: selectors.getModals(state),
-    userToken: selectors.getUserToken(state)
 });
 
 const mapDispatchToProps = dispatch => ({
