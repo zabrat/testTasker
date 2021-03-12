@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../themes/colors.js';
-import { Wrapper } from './styledComponents.js';
+import { TodoWrapper, MainWrapper } from './styledComponents.js';
 import CustomTable  from '../components/customTable/CustomTable';
 import HeaderModule from '../headerModule';
 import CustomPaginator from '../components/customPaginator/CustomPaginator';
@@ -11,6 +11,7 @@ import { Link }  from 'react-router-dom';
 const TodoModule = props => {
     const {
         tasks,
+        logOut,
         isLogged,
         changePage,
         pageQuantity,
@@ -97,26 +98,32 @@ const TodoModule = props => {
 
     return(
         <ThemeProvider theme={theme}>
-            <Link to='/login'>
-                <CustomButton
-                    text='Sign in'
-                />
-            </Link>
-            <HeaderModule/>
-            <Wrapper data-at={'todo-module-conatiner'}>
-                <CustomTable
-                    rows={tasks}
-                    setTaskStatusFormat={setTaskStatusFormat}
-                    isLogged={isLogged}
-                    onOpenModal={onOpenModal}
-                    sortHandle={sortField}
-                    columnTitles={columnTitles}
-                />
-                <CustomPaginator
-                    pageQuantity={pageQuantity}
-                    handlePage={handlePage}
-                /> 
-            </Wrapper>
+            <MainWrapper>        
+                <MainWrapper.ButtonWrapper>
+                    <Link to='/login'>
+                        <CustomButton
+                            text={isLogged ? 'Log out' : 'Sign in'}
+                            handleEvent={isLogged ? logOut : null}
+                            height={30}
+                            />
+                    </Link>
+                </MainWrapper.ButtonWrapper>       
+                <HeaderModule/>
+                <TodoWrapper data-at={'todo-module-conatiner'}>
+                    <CustomTable
+                        rows={tasks}
+                        setTaskStatusFormat={setTaskStatusFormat}
+                        isLogged={isLogged}
+                        onOpenModal={onOpenModal}
+                        sortHandle={sortField}
+                        columnTitles={columnTitles}
+                        />
+                    <CustomPaginator
+                        pageQuantity={pageQuantity}
+                        handlePage={handlePage}
+                        /> 
+                </TodoWrapper>
+            </MainWrapper>
         </ThemeProvider>
     )
 }

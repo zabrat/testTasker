@@ -4,7 +4,8 @@ export const InputWrapper = styled.div`
     height: 30%;
     width: 100%;
     ${props => props.display === 'inline' ?
-     `display: flex;`
+     `display: flex;
+     align-items: center;`
      :
      `display: flex;
     align-items: center;
@@ -15,9 +16,10 @@ export const InputWrapper = styled.div`
 `;
 
 InputWrapper.label = styled.p`
-    margin: 5px;
+    min-width: 60px;
     font-size: ${props => props.fontSize}px;
     color: ${props => props.labelColor};
+    margin: 0;
 `;
 
 InputWrapper.input = styled.input`

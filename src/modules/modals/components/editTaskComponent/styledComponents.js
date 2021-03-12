@@ -15,12 +15,18 @@ Wrapper.FormWrapper = styled.form`
     justify-content: space-around;
     align-items: center;
     flex-direction: column;
+    position: relative;
 `;
 
 Wrapper.exitBtn = styled.button`
+  font-size: 20px;
   width: 25px;
   height: 25px;
   color: #FFD700;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
   border: none;
   outline: none;
   background: none;

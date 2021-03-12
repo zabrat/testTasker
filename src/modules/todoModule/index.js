@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+    logOut: () => dispatch(actions.onLogOut()),
     checkUserStatus: () => dispatch(actions.onCheckUserStatus()),
     openEditTaskModal: taskData => dispatch(actions.onOpenEditTaskModal(taskData)),
     getTasksRequest: () => dispatch(actions.onGetTasksRequest()),

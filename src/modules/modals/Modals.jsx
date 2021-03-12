@@ -15,8 +15,8 @@ const Modals = props => {
     const modalStyles = {
         content: {
             ...styles.content,
-            minWidth: 500,
-            minHeight: 300,
+            width: 500,
+            height: 300,
         },
         overlay: {
             ...styles.overlay,

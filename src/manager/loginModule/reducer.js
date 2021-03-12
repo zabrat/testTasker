@@ -13,6 +13,12 @@ export default (state = initialState, action) => {
                 userToken: action.payload,
                 isLogged: true
             }
+        case constants.LOG_OUT:
+            return {
+                ...state,
+                userToken: '',
+                isLogged: false
+            }
         default:
             return state;
     }

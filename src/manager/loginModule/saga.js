@@ -6,6 +6,7 @@ import { takeEvery, call, put } from 'redux-saga/effects';
 
 export function* watchLoginModule() {
   yield takeEvery(constants.SIGN_IN_REQUEST, workerSignIn);
+  yield takeEvery(constants.LOG_OUT, workerlogOut);
 }
 
 function* workerSignIn(action) {
@@ -26,5 +27,13 @@ function* workerSignIn(action) {
   }
   } catch (err) {
         console.error("ERROR", err);
+  }
+}
+
+function* workerlogOut() {
+  try {
+    localStorage.removeItem('userToken')
+  } catch (err) {
+    console.error("ERROR", err);
   }
 }

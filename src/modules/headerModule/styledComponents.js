@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-    width: 90%;
-    height: 10%;
+    width: 50%;
+    height: 30%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     box-shadow: ${props => props.theme.mainBoxShadow};
     border-radius: 25px;
@@ -12,9 +12,21 @@ export const Wrapper = styled.div`
     box-sizing: border-box;
 `;
 
-Wrapper.FormWrapper = styled.form`
-    width: 100%;
+export const FormWrapper = styled.form`
+    height: 90%;
+    width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 `;
+
+FormWrapper.InputsWrapper = styled.div`
+    height: 100%;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+`;
+
+Wrapper.FormWrapper = FormWrapper;

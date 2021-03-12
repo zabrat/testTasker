@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Table = styled.div`
-    height: 90%;
+    height: 80%;
     margin: 10px;
 `;
 

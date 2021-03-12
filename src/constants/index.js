@@ -12,4 +12,5 @@ export default Object.defineProperties(constants, {
     GET_TASKS_SUCCESS: { value: 'get_tasks_success', writable: false },
     CHANGE_PAGE_REQUEST: { value: 'change_page_request', writable: false },
     SORT_FIELD_REQUEST: { value: 'sort_field_request', writable: false },
+    LOG_OUT: { value: 'log_out', writable: false },
 });

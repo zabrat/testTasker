@@ -73,7 +73,7 @@ const EditTaskComponent = props => {
                         labelColor={theme.colorFont}
                         fontSize={25}
                         height={30}
-                        width={80}
+                        width={70}
                         inputBackground={theme.colorFont}
                         handleChange={getInputValue}
                     />
