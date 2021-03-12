@@ -4,18 +4,20 @@ import * as actions from './actions';
 import formDataCreator from '../../utils/formDataCreator';
 import { takeEvery, call, put } from 'redux-saga/effects';
 
-export function* watchHeaderModule() {
-  yield takeEvery(constants.ADD_TASK_REQUEST, workerAddTask);
+export function* watchModals() {
+  yield takeEvery(constants.EDIT_TASK_REQUEST, workerEditTask);
 }
 
-function* workerAddTask(action) {
+function* workerEditTask(action) {
   try {
     const formData = yield call(formDataCreator, action.payload);
-    const response = yield call(api.addTask, formData);
-
-    if (response.status === 'ok') {
+    const response = yield call(api.editTask, formData, action.payload.id);
+    const { status } = response;
+    if (status === 'error') {
+      alert('Need authorization');
+    } else {
       yield put(actions.onGetTasksRequest());
-      alert('Task was added successfully');
+      alert('Task was edited successfully');
     }
   } catch (err) {
     console.error('ERROR', err);

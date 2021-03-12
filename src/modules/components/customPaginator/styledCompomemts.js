@@ -11,9 +11,15 @@ export const PagesWrapper = styled.span`
 `;
 
 PagesWrapper.pageNumber = styled.button`
+    ${props => props.currentPage ?
+    `
+    background: #332359;
+    color: white;`:
+    null};
     cursor: pointer;
     font-size: 1rem;
     margin: 0.2rem;
+    outline: none;
 `;
 
 Wrapper.PagesWrapper = PagesWrapper;

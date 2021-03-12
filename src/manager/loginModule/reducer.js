@@ -1,8 +1,8 @@
 import constants from '../../constants';
 
 const initialState = {
-    userStatus: 'guest',
-    currentUserData: ''
+    userToken: '',
+    isLogged: false
 }
 
 export default (state = initialState, action) => {
@@ -10,7 +10,14 @@ export default (state = initialState, action) => {
         case constants.SIGN_IN_SUCCESS:
             return {
                 ...state,
-                tasks: action.payload,
+                userToken: action.payload,
+                isLogged: true
+            }
+        case constants.LOG_OUT:
+            return {
+                ...state,
+                userToken: '',
+                isLogged: false
             }
         default:
             return state;

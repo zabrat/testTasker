@@ -19,3 +19,9 @@ Wrapper.FormWrapper = styled.form`
     align-items: center;
     flex-direction: column;
 `;
+
+export const ButtonWrapper = styled.span`
+    position: absolute;
+    top: 10px;
+    right: 10px;
+`;

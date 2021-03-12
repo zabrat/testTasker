@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { 
     Wrapper,
     PagesWrapper
@@ -7,25 +8,37 @@ import {
 const CustomPaginator = props => {
     const {
         handlePage,
-        pageQuantity
+        currentPage,
+        pageQuantity,
     } = props;
 
     const pagesList = Array.from(Array(pageQuantity+1).keys()).slice(1);
+    
 
     return(
         <Wrapper>
             <PagesWrapper>
                 {pagesList.map(page => (
                     <PagesWrapper.pageNumber
-                        onClick={handlePage}
-                        key={page}
                         id={page}
-                        children={page}/>
+                        key={page}
+                        onClick={handlePage}
+                        children={page}
+                        currentPage={+currentPage === page ? true: false}
+                    />
                 ))    
                 }
             </PagesWrapper>
         </Wrapper>
     )
+}
+
+CustomPaginator.propTypes = {
+    pageQuantity: PropTypes.number
+}
+
+CustomPaginator.defaultProps = {
+    pageQuantity: 0,
 }
 
 export default React.memo(CustomPaginator);

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Wrapper } from './styledComponents';
+import { Wrapper, FormWrapper } from './styledComponents';
 import { ThemeProvider } from 'styled-components';
 import theme from '../themes/colors.js';
-import formDataCreator from '../../utils/formDataCreator'
 import CustomInput from '../components/customInput/CustomInput';
 import CustomButton from '../components/customButton/CustomButton';
 
@@ -31,42 +30,52 @@ const HeaderModule = props => {
     const onAddTask = event => {
         event.preventDefault();
         addTaskRequest(taskData)
+        setTaskData({
+            username: '',
+            email: '',
+            text: ''
+        })
     }
 
     return(
         <ThemeProvider theme={theme}>
             <Wrapper>
-                <Wrapper.FormWrapper 
-                    onSubmit={onAddTask}
-                    action='https://uxcandy.com/~shapoval/test-task-backend/v2/create?developer=Name'
-                    method='post'
-                >
-                    <CustomInput
-                        label='Name'
-                        name='username'
-                        width={80}
-                        handleChange={getInputValue}
-                        display='inline'
-                    />
-                    <CustomInput
-                        label='Email'
-                        name='email'
-                        display='inline'
-                        width={80}
-                        handleChange={getInputValue}
-                    />
-                    <CustomInput
-                        display='inline'
-                        label='Task'
-                        width={80}
-                        name='text'
-                        handleChange={getInputValue}
-                    />
+                <Wrapper.FormWrapper onSubmit={onAddTask}>
+                    <FormWrapper.InputsWrapper>
+                        <CustomInput
+                            label='Name'
+                            value={taskData.username}
+                            name='username'
+                            width={90}
+                            required={true}
+                            handleChange={getInputValue}
+                            display='inline'
+                        />
+                        <CustomInput
+                            label='Email'
+                            value={taskData.email}
+                            name='email'
+                            required={true}
+                            type='email'
+                            display='inline'
+                            width={90}
+                            handleChange={getInputValue}
+                        />
+                        <CustomInput
+                            display='inline'
+                            value={taskData.text}
+                            label='Task'
+                            required={true}
+                            width={90}
+                            height={50}
+                            name='text'
+                            handleChange={getInputValue}
+                        />
+                    </FormWrapper.InputsWrapper>
                     <CustomButton
-                        type={'submit'}
-                        height={30}
-                        width={300}
-                        text={'Add task'}
+                        type='submit'
+                        height={60}
+                        text='Add task'
                     />
                 </Wrapper.FormWrapper>
             </Wrapper>

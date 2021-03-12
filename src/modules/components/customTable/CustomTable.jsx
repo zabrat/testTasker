@@ -11,8 +11,11 @@ import {
 const CustomTable = props => {
     const {
         rows,
+        isLogged,
         sortHandle,
+        onOpenModal,
         columnTitles,
+        setTaskStatusFormat
     } = props;
 
     return(
@@ -31,12 +34,16 @@ const CustomTable = props => {
                 </Table.TableHeader>
                 <Rows>
                 {rows.map(rowInfo => (
-                    <Table.Row key={rowInfo.id}>
-                        <Row.rowInfo children={rowInfo.id}/>
+                    <Table.Row 
+                        id={rowInfo.id} 
+                        key={rowInfo.id} 
+                        isLogged={isLogged} 
+                        onClick={onOpenModal}
+                    >
                         <Row.rowInfo children={rowInfo.username}/>
                         <Row.rowInfo children={rowInfo.email}/>
                         <Row.rowInfo children={rowInfo.text}/>
-                        <Row.rowInfo children={rowInfo.status}/>
+                        <Row.rowInfo children={setTaskStatusFormat(rowInfo.status)}/>
                     </Table.Row> 
                 ))}
                 </Rows>

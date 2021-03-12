@@ -1,32 +1,34 @@
 import React, {useEffect} from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../themes/colors.js';
-import { Wrapper } from './styledComponents.js';
+import { TodoWrapper, MainWrapper } from './styledComponents.js';
 import CustomTable  from '../components/customTable/CustomTable';
-import HeaderModule from '../headerModule'
-import CustomPaginator from '../components/customPaginator/CustomPaginator'
-// import Header  from '../header';
+import HeaderModule from '../headerModule';
+import CustomPaginator from '../components/customPaginator/CustomPaginator';
+import CustomButton from '../components/customButton/CustomButton';
+import { Link }  from 'react-router-dom';
 
 const TodoModule = props => {
     const {
         tasks,
+        logOut,
+        isLogged,
         changePage,
+        currentPage,
         pageQuantity,
+        checkUserStatus,
         getTasksRequest,
         sortFieldRequest,
+        openEditTaskModal,
     } = props;
 
 
     useEffect(() => {
         getTasksRequest();
-    }, [getTasksRequest])
+        checkUserStatus();
+    }, [getTasksRequest, checkUserStatus])
 
     const columnTitles = [
-        {
-            id: 1,
-            text: 'Id',
-            name: 'id'
-        },
         {
             id: 2,
             text: 'User name',
@@ -57,20 +59,68 @@ const TodoModule = props => {
         changePage(id);
     }
 
+    const onOpenModal = event => {
+        if(isLogged){
+            let currentElement = event.target;
+
+            if (!(currentElement.tagName === 'DIV')){
+                currentElement = currentElement.parentElement
+            } 
+            const taskId = currentElement.id;
+            const taskText = currentElement.children[2].innerText;
+            const taskStatus = currentElement.children[3].innerText;
+
+            const taskData = {
+                taskId,
+                taskText,
+                taskStatus
+            }
+
+            openEditTaskModal(taskData);
+        }
+    }
+
+    const setTaskStatusFormat = taskStatus => {
+        if(taskStatus === 0){
+            return "task isn't completed"
+        } else if (taskStatus === 1) {
+            return "task isn't completed, edited by admin"
+        } else if (taskStatus === 10) {
+            return 'task is completed'
+        } else if (taskStatus === 11) {
+            return 'task is edited by admin and completed'
+        }
+    }
+
     return(
         <ThemeProvider theme={theme}>
-            <HeaderModule/>
-            <Wrapper data-at={'todo-module-conatiner'}>
-                <CustomTable
-                    rows={tasks}
-                    sortHandle={sortField}
-                    columnTitles={columnTitles}
-                />
-                <CustomPaginator
-                    pageQuantity={pageQuantity}
-                    handlePage={handlePage}
-                /> 
-            </Wrapper>
+            <MainWrapper>        
+                <MainWrapper.ButtonWrapper>
+                    <Link to='/login'>
+                        <CustomButton
+                            text={isLogged ? 'Log out' : 'Sign in'}
+                            height={30}
+                            handleEvent={isLogged ? logOut : null}
+                        />
+                    </Link>
+                </MainWrapper.ButtonWrapper>       
+                <HeaderModule/>
+                <TodoWrapper data-at={'todo-module-conatiner'}>
+                    <CustomTable
+                        rows={tasks}
+                        isLogged={isLogged}
+                        onOpenModal={onOpenModal}
+                        sortHandle={sortField}
+                        columnTitles={columnTitles}
+                        setTaskStatusFormat={setTaskStatusFormat}
+                        />
+                    <CustomPaginator
+                        handlePage={handlePage}
+                        currentPage={currentPage}
+                        pageQuantity={pageQuantity}
+                        /> 
+                </TodoWrapper>
+            </MainWrapper>
         </ThemeProvider>
     )
 }
