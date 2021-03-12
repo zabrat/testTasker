@@ -11,7 +11,7 @@ import { watchRootSaga } from './roots/rootReducer/rootSaga';
 function init() {
     const sagaMiddleware = createSagaMiddleware();
     const store = createStore(rootReducer, applyMiddleware(logger, sagaMiddleware));
-    process.env.NODE_ENV !== 'production' && (window.store = store);
+    window.store = store;
 
     sagaMiddleware.run(watchRootSaga);
 
