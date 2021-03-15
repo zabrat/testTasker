@@ -22,7 +22,7 @@ function* workerGetTasks() {
     const currentSortField = yield select(getCurrentSortField);
     const isCurrentSortDirectionDesc = yield select(getCurrentSortDirection);
     const currentURL = `https://uxcandy.com/~shapoval/test-task-backend/v2/?developer=zaur&sort_field=${currentSortField}&page=${currentPage}&sort_direction=${isCurrentSortDirectionDesc ? 'desc': 'asc'}`;
-
+    console.log(currentURL)
     const response = yield call(api.getAllTasks, currentURL);
     const tasksData = response.message;
     const pageQuantity = Math.ceil(tasksData.total_task_count / 3);
